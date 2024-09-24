@@ -19,6 +19,7 @@ public class LinkedList {
     public void addFirst(int data){
         //create a new node
         Node newNode = new Node(data);
+        size++;
         if(head == null){
             head = tail = newNode;
             return;
@@ -31,6 +32,7 @@ public class LinkedList {
     //function to add elements from last(tail)
     public void addLast(int data){
         Node newNode = new Node(data);
+        size++;
         if(head == null){
             head = tail = newNode;      //TC = O(1)
             return;
@@ -38,7 +40,20 @@ public class LinkedList {
         tail.next= newNode;
         tail = newNode;
     }
+    //function to remove the elements from first
+    public void removeFirst(){
+        if(size == 0){
+            System.out.println("LinkedList is empty");
+            return;
+        }else if(size == 1){
+            size = 0;
+            head = tail = null;
+            return;
+        }
+        head = head.next;
+        size--;
 
+    }
     //function to print the elements
     public void print(){
         if(head == null){
@@ -61,5 +76,8 @@ public class LinkedList {
         ll.addLast(13);
         ll.addLast(14);
         ll.print();
+        ll.removeFirst();
+        ll.print();
+
     }
 }
