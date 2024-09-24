@@ -54,6 +54,41 @@ public class LinkedList {
         size--;
 
     }
+    //function to remove el from the last
+    public void removeLast(){
+        if(size == 0){
+            System.out.println("LinkedList is empty");
+            return;
+        }else if(size == 1){
+            size = 0;
+            head = tail = null;
+            return;
+        }
+        Node prev = head;
+        size--;
+        for(int i =0;i < size -1;i++){
+            prev = prev.next;
+        }    
+        prev.next = null;
+        tail = prev.next;
+    }
+
+    //function to add el in the middle
+    public void addMiddle(int idx,int data){
+        if(idx == 0){
+            addFirst(data);
+        }
+        Node newNode = new Node(data);
+        size++;
+        Node temp = head;
+        int i =0;
+        while(i < idx -1){
+            temp = temp.next;
+            i++;
+        }
+        newNode.next = temp.next;
+        temp.next = newNode;
+    }
     //function to print the elements
     public void print(){
         if(head == null){
@@ -75,9 +110,13 @@ public class LinkedList {
         ll.addFirst(11);
         ll.addLast(13);
         ll.addLast(14);
+        ll.addLast(15);
+        ll.addMiddle(3, 16);
         ll.print();
         ll.removeFirst();
+        ll.removeLast();
         ll.print();
+        System.out.println("Size of ll :" +size);
 
     }
 }
